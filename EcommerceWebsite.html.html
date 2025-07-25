@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisely Travel Diary</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            background-color: #005f73;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #e9d8a6;
+        }
+
+        header:hover {
+            background-color: #028090;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #e9d8a6;
+            transition: background-color 0.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: #003b2d;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #005f73;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            background-color: #003b2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #028090;
+        }
+
+        .diary-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .diary-card {
+            background: #fff;
+            padding: 15px;
+            margin: 10px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease;
+        }
+
+        .diary-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .diary-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .diary-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .diary-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #005f73;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        footer:hover {
+            transform: translateY(-10px);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .new-diary-form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .new-diary-form:hover {
+            transform: translateY(-5px);
+        }
+
+        .new-diary-form input,
+        .new-diary-form textarea,
+        .new-diary-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .new-diary-form button {
+            background-color: #003b2d;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .new-diary-form button:hover {
+            background-color: #028090;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Wisely</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#new-diary">New Diary</a>
+            <a href="#featured-diaries">Featured Diaries</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Wisely Travel Diaries</h1>
+        <p>Capture your travel memories and share your journey.</p>
+        <button onclick="document.getElementById('new-diary').scrollIntoView();">Start a New Diary</button>
+    </section>
+
+    <!-- Featured Diaries -->
+    <section id="featured-diaries" class="featured-diaries">
+        <h2>Featured Diaries</h2>
+        <div class="diary-cards">
+            <div class="diary-card" id="diary-card-1">
+                <img src="https://via.placeholder.com/300" alt="Travel Image">
+                <h3>Trip to Bali</h3>
+                <p>A beautiful journey to Bali, full of adventure and peace.</p>
+            </div>
+            <div class="diary-card" id="diary-card-2">
+                <img src="https://via.placeholder.com/300" alt="Travel Image">
+                <h3>Exploring Paris</h3>
+                <p>A romantic getaway to Paris. Eiffel Tower, cafes, and culture.</p>
+            </div>
+            <div class="diary-card" id="diary-card-3">
+                <img src="https://via.placeholder.com/300" alt="Travel Image">
+                <h3>Tokyo Adventure</h3>
+                <p>An unforgettable experience in the vibrant city of Tokyo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Diary Form -->
+    <section id="new-diary" class="new-diary-form">
+        <h2>Write a New Travel Diary</h2>
+        <form id="new-diary-form" onsubmit="handleSubmit(event)">
+            <textarea id="diary-content" placeholder="Write about your travel experience..." rows="6"></textarea>
+            <input type="file" id="image-upload" accept="image/*">
+            <button type="submit">Save Diary Entry</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Wisely. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Basic Animation for Diary Cards
+        window.onload = () => {
+            const cards = document.querySelectorAll('.diary-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        };
+
+        // Handle New Diary Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const content = document.getElementById('diary-content').value;
+            const imageFile = document.getElementById('image-upload').files[0];
+
+            if (content && imageFile) {
+                alert('Diary Entry Saved!');
+                // Logic for saving the diary entry to the server can go here.
+            } else {
+                alert('Please fill in both content and upload an image.');
+            }
+        }
+    </script>
+
+</body>
+</html>
