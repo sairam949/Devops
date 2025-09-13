@@ -1,2 +1,7 @@
 # Treat Word documents as binary to avoid diff/merge issues
 *.docx binary
+# Treat all Word documents as binary to avoid diff/merge issues
+*.docx -diff
+*.docx -text
+*.doc -diff
+*.doc -text
